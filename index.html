@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="si" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ව්‍යාජ කේත අභ්‍යාස</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Sinhala:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      box-sizing: border-box;
+      font-family: 'Noto Sans Sinhala', sans-serif;
+    }
+    .exercise-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+      border: 2px solid #e2e8f0;
+      transition: all 0.3s ease;
+    }
+    .exercise-card:hover {
+      border-color: #6366f1;
+      box-shadow: 0 10px 40px rgba(99, 102, 241, 0.15);
+    }
+    .code-block {
+      background: #1e1e2e;
+      color: #cdd6f4;
+      font-family: 'Courier New', monospace;
+      border-radius: 12px;
+      padding: 1rem;
+      line-height: 1.8;
+    }
+    .keyword { color: #cba6f7; font-weight: bold; }
+    .variable { color: #89b4fa; }
+    .string { color: #a6e3a1; }
+    .comment { color: #6c7086; font-style: italic; }
+    .operator { color: #f9e2af; }
+    .input-field {
+      border: 2px solid #e2e8f0;
+      transition: all 0.2s ease;
+    }
+    .input-field:focus {
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+      outline: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      transition: all 0.2s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+    }
+    .result-box {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border: 2px solid #10b981;
+    }
+    .tab-active {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+      color: white;
+    }
+    .number-badge {
+      background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+  </style>
+  <style>@view-transition { navigation: auto; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+  <div id="app" class="h-full overflow-auto"><!-- Header -->
+   <header class="bg-white shadow-sm border-b border-indigo-100 sticky top-0 z-10">
+    <div class="max-w-4xl mx-auto px-4 py-4">
+     <h1 id="main-title" class="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 text-center">📝 ව්‍යාජ කේත අභ්‍යාස</h1>
+     <p class="text-center text-gray-500 mt-1 text-sm">Pseudocode Homework Exercises</p>
+    </div>
+   </header><!-- Tab Navigation -->
+   <div class="max-w-4xl mx-auto px-4 mt-6">
+    <div class="flex flex-wrap gap-2 justify-center"><button onclick="showExercise(1)" id="tab1" class="tab-active px-4 py-2 rounded-full font-medium transition-all"> අභ්‍යාස 1 </button> <button onclick="showExercise(2)" id="tab2" class="bg-white px-4 py-2 rounded-full font-medium text-gray-600 hover:bg-gray-100 transition-all"> අභ්‍යාස 2 </button> <button onclick="showExercise(3)" id="tab3" class="bg-white px-4 py-2 rounded-full font-medium text-gray-600 hover:bg-gray-100 transition-all"> අභ්‍යාස 3 </button>
+    </div>
+   </div><!-- Exercise 1: Rectangle Area -->
+   <div id="exercise1" class="max-w-4xl mx-auto px-4 py-6">
+    <div class="exercise-card rounded-2xl p-6">
+     <div class="flex items-start gap-4 mb-4">
+      <div class="number-badge flex-shrink-0">
+       1
+      </div>
+      <div>
+       <h2 class="text-xl font-bold text-gray-800">සෘජුකෝණාස්‍ර වර්ගඵලය</h2>
+       <p class="text-gray-600 mt-1">Rectangle Area Calculator</p>
+      </div>
+     </div>
+     <div class="bg-indigo-50 rounded-xl p-4 mb-4">
+      <p class="text-gray-700 leading-relaxed"><strong>ප්‍රශ්නය:</strong> සෘජුකෝණාස්‍රයක දිග (Length) සහ පළල (Width) ආදානය (Input) කර, එහි වර්ගඵලය (Area) ගණනය කර ප්‍රදර්ශනය (Display) කිරීම සඳහා ව්‍යාජ කේතයක් ලියන්න.</p>
+     </div><!-- Pseudocode Solution -->
+     <div class="mb-4">
+      <h3 class="font-semibold text-gray-700 mb-2 flex items-center gap-2"><span>📋</span> ව්‍යාජ කේතය (Pseudocode):</h3>
+      <div class="code-block text-sm md:text-base">
+       <div>
+        <span class="keyword">BEGIN</span>
+       </div>
+       <div class="ml-4">
+        <span class="comment">// Variables declare කිරීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DECLARE</span> <span class="variable">length</span>, <span class="variable">width</span>, <span class="variable">area</span> <span class="keyword">AS</span> NUMBER
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// Input ලබාගැනීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DISPLAY</span> <span class="string">"දිග ඇතුළත් කරන්න:"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">INPUT</span> <span class="variable">length</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DISPLAY</span> <span class="string">"පළල ඇතුළත් කරන්න:"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">INPUT</span> <span class="variable">width</span>
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// වර්ගඵලය ගණනය කිරීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="variable">area</span> <span class="operator">←</span> <span class="variable">length</span> <span class="operator">×</span> <span class="variable">width</span>
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// ප්‍රතිඵලය ප්‍රදර්ශනය</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DISPLAY</span> <span class="string">"වර්ගඵලය = "</span>, <span class="variable">area</span>
+       </div>
+       <div>
+        <span class="keyword">END</span>
+       </div>
+      </div>
+     </div><!-- Interactive Demo -->
+     <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border-2 border-green-200">
+      <h3 class="font-semibold text-green-800 mb-3 flex items-center gap-2"><span>🧪</span> අත්හදා බලන්න (Try It):</h3>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+       <div><label class="block text-sm font-medium text-gray-700 mb-1">දිග (Length):</label> <input type="number" id="length1" class="input-field w-full px-4 py-2 rounded-lg" placeholder="උදා: 10" min="0">
+       </div>
+       <div><label class="block text-sm font-medium text-gray-700 mb-1">පළල (Width):</label> <input type="number" id="width1" class="input-field w-full px-4 py-2 rounded-lg" placeholder="උදා: 5" min="0">
+       </div>
+      </div><button onclick="calculateArea()" class="btn-primary w-full text-white py-3 rounded-lg font-semibold"> ගණනය කරන්න 🔢 </button>
+      <div id="result1" class="mt-4 hidden">
+       <div class="result-box rounded-lg p-4 text-center">
+        <p class="text-green-800 font-semibold" id="area-result"></p>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- Exercise 2: Pass/Fail -->
+   <div id="exercise2" class="max-w-4xl mx-auto px-4 py-6 hidden">
+    <div class="exercise-card rounded-2xl p-6">
+     <div class="flex items-start gap-4 mb-4">
+      <div class="number-badge flex-shrink-0">
+       2
+      </div>
+      <div>
+       <h2 class="text-xl font-bold text-gray-800">සමත්/අසමත් තීරණය</h2>
+       <p class="text-gray-600 mt-1">Pass/Fail Decision</p>
+      </div>
+     </div>
+     <div class="bg-indigo-50 rounded-xl p-4 mb-4">
+      <p class="text-gray-700 leading-relaxed"><strong>ප්‍රශ්නය:</strong> ශිෂ්‍යයෙකුගේ ලකුණු (Marks) ආදානය කර, එම ලකුණු 40 හෝ ඊට වැඩි නම් "Pass" ලෙසත්, 40 ට අඩු නම් "Fail" ලෙසත් ප්‍රදර්ශනය කිරීමට IF ... THEN ... ELSE ... ENDIF ව්‍යුහය භාවිතා කර ව්‍යාජ කේතයක් ලියන්න.</p>
+     </div><!-- Pseudocode Solution -->
+     <div class="mb-4">
+      <h3 class="font-semibold text-gray-700 mb-2 flex items-center gap-2"><span>📋</span> ව්‍යාජ කේතය (Pseudocode):</h3>
+      <div class="code-block text-sm md:text-base">
+       <div>
+        <span class="keyword">BEGIN</span>
+       </div>
+       <div class="ml-4">
+        <span class="comment">// Variable declare කිරීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DECLARE</span> <span class="variable">marks</span> <span class="keyword">AS</span> NUMBER
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// Input ලබාගැනීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DISPLAY</span> <span class="string">"ලකුණු ඇතුළත් කරන්න:"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">INPUT</span> <span class="variable">marks</span>
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// IF...THEN...ELSE තීරණ ව්‍යුහය</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">IF</span> <span class="variable">marks</span> <span class="operator">≥</span> <span class="operator">40</span> <span class="keyword">THEN</span>
+       </div>
+       <div class="ml-8">
+        <span class="keyword">DISPLAY</span> <span class="string">"Pass ✅"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">ELSE</span>
+       </div>
+       <div class="ml-8">
+        <span class="keyword">DISPLAY</span> <span class="string">"Fail ❌"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">ENDIF</span>
+       </div>
+       <div>
+        <span class="keyword">END</span>
+       </div>
+      </div>
+     </div><!-- Flowchart Explanation -->
+     <div class="bg-yellow-50 rounded-xl p-4 mb-4 border-2 border-yellow-200">
+      <h3 class="font-semibold text-yellow-800 mb-2">📊 තීරණ ප්‍රවාහ රූප සටහන:</h3>
+      <div class="flex justify-center">
+       <div class="text-center">
+        <div class="bg-white rounded-lg p-3 border-2 border-gray-300 mb-2">
+         ලකුණු ඇතුළත් කරන්න
+        </div>
+        <div class="text-2xl">
+         ⬇️
+        </div>
+        <div class="bg-yellow-100 rounded-lg p-3 border-2 border-yellow-400 mb-2 transform rotate-0"><span class="font-bold">marks ≥ 40 ?</span>
+        </div>
+        <div class="flex justify-center gap-8">
+         <div class="text-center"><span class="text-green-600 font-bold">ඔව් (Yes)</span>
+          <div class="text-2xl">
+           ⬇️
+          </div>
+          <div class="bg-green-100 rounded-lg p-2 border-2 border-green-400">
+           Pass ✅
+          </div>
+         </div>
+         <div class="text-center"><span class="text-red-600 font-bold">නැත (No)</span>
+          <div class="text-2xl">
+           ⬇️
+          </div>
+          <div class="bg-red-100 rounded-lg p-2 border-2 border-red-400">
+           Fail ❌
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div><!-- Interactive Demo -->
+     <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border-2 border-green-200">
+      <h3 class="font-semibold text-green-800 mb-3 flex items-center gap-2"><span>🧪</span> අත්හදා බලන්න (Try It):</h3>
+      <div class="mb-4"><label class="block text-sm font-medium text-gray-700 mb-1">ලකුණු (Marks) - 0 සිට 100 දක්වා:</label> <input type="number" id="marks2" class="input-field w-full px-4 py-2 rounded-lg" placeholder="උදා: 45" min="0" max="100">
+      </div><button onclick="checkPassFail()" class="btn-primary w-full text-white py-3 rounded-lg font-semibold"> පරීක්ෂා කරන්න 📊 </button>
+      <div id="result2" class="mt-4 hidden">
+       <div id="pass-fail-result" class="rounded-lg p-4 text-center font-bold text-xl">
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- Exercise 3: Discount Calculator -->
+   <div id="exercise3" class="max-w-4xl mx-auto px-4 py-6 hidden">
+    <div class="exercise-card rounded-2xl p-6">
+     <div class="flex items-start gap-4 mb-4">
+      <div class="number-badge flex-shrink-0">
+       3
+      </div>
+      <div>
+       <h2 class="text-xl font-bold text-gray-800">වට්ටම් ගණනය</h2>
+       <p class="text-gray-600 mt-1">Discount Calculator</p>
+      </div>
+     </div>
+     <div class="bg-indigo-50 rounded-xl p-4 mb-4">
+      <p class="text-gray-700 leading-relaxed"><strong>ප්‍රශ්නය:</strong> පාරිභෝගිකයෙකු මිලදී ගත් භාණ්ඩවල මුළු එකතුව (Total Bill) ලබාගෙන, එම මුදල රුපියල් 2000 ට වඩා වැඩි නම් 10% ක වට්ටමක් ලබා දී ගෙවිය යුතු අවසන් මුදල ප්‍රදර්ශනය කිරීමට ව්‍යාජ කේතයක් ලියන්න.</p>
+     </div><!-- Pseudocode Solution -->
+     <div class="mb-4">
+      <h3 class="font-semibold text-gray-700 mb-2 flex items-center gap-2"><span>📋</span> ව්‍යාජ කේතය (Pseudocode):</h3>
+      <div class="code-block text-sm md:text-base">
+       <div>
+        <span class="keyword">BEGIN</span>
+       </div>
+       <div class="ml-4">
+        <span class="comment">// Variables declare කිරීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DECLARE</span> <span class="variable">totalBill</span>, <span class="variable">discount</span>, <span class="variable">finalAmount</span> <span class="keyword">AS</span> NUMBER
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// Input ලබාගැනීම</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DISPLAY</span> <span class="string">"මුළු බිල්පත ඇතුළත් කරන්න:"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">INPUT</span> <span class="variable">totalBill</span>
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// වට්ටම් පරීක්ෂාව සහ ගණනය</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">IF</span> <span class="variable">totalBill</span> <span class="operator">&gt;</span> <span class="operator">2000</span> <span class="keyword">THEN</span>
+       </div>
+       <div class="ml-8">
+        <span class="variable">discount</span> <span class="operator">←</span> <span class="variable">totalBill</span> <span class="operator">×</span> <span class="operator">0.10</span>
+       </div>
+       <div class="ml-8">
+        <span class="variable">finalAmount</span> <span class="operator">←</span> <span class="variable">totalBill</span> <span class="operator">-</span> <span class="variable">discount</span>
+       </div>
+       <div class="ml-8">
+        <span class="keyword">DISPLAY</span> <span class="string">"වට්ටම් (10%) = "</span>, <span class="variable">discount</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">ELSE</span>
+       </div>
+       <div class="ml-8">
+        <span class="variable">finalAmount</span> <span class="operator">←</span> <span class="variable">totalBill</span>
+       </div>
+       <div class="ml-8">
+        <span class="keyword">DISPLAY</span> <span class="string">"වට්ටමක් නොමැත"</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">ENDIF</span>
+       </div>
+       <div class="ml-4">
+        &nbsp;
+       </div>
+       <div class="ml-4">
+        <span class="comment">// අවසන් මුදල ප්‍රදර්ශනය</span>
+       </div>
+       <div class="ml-4">
+        <span class="keyword">DISPLAY</span> <span class="string">"ගෙවිය යුතු මුදල = "</span>, <span class="variable">finalAmount</span>
+       </div>
+       <div>
+        <span class="keyword">END</span>
+       </div>
+      </div>
+     </div><!-- Key Concepts -->
+     <div class="bg-purple-50 rounded-xl p-4 mb-4 border-2 border-purple-200">
+      <h3 class="font-semibold text-purple-800 mb-2">💡 ප්‍රධාන සංකල්ප:</h3>
+      <ul class="space-y-2 text-gray-700">
+       <li class="flex items-start gap-2"><span class="text-purple-600">•</span> <span><strong>කොන්දේසිය:</strong> totalBill &gt; 2000</span></li>
+       <li class="flex items-start gap-2"><span class="text-purple-600">•</span> <span><strong>වට්ටම් ගණනය:</strong> discount = totalBill × 10/100</span></li>
+       <li class="flex items-start gap-2"><span class="text-purple-600">•</span> <span><strong>අවසන් මුදල:</strong> finalAmount = totalBill - discount</span></li>
+      </ul>
+     </div><!-- Interactive Demo -->
+     <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-xl p-4 border-2 border-green-200">
+      <h3 class="font-semibold text-green-800 mb-3 flex items-center gap-2"><span>🧪</span> අත්හදා බලන්න (Try It):</h3>
+      <div class="mb-4"><label class="block text-sm font-medium text-gray-700 mb-1">මුළු බිල්පත (Total Bill) රුපියල්:</label> <input type="number" id="bill3" class="input-field w-full px-4 py-2 rounded-lg" placeholder="උදා: 2500" min="0">
+      </div><button onclick="calculateDiscount()" class="btn-primary w-full text-white py-3 rounded-lg font-semibold"> ගණනය කරන්න 💰 </button>
+      <div id="result3" class="mt-4 hidden">
+       <div class="bg-white rounded-lg p-4 border-2 border-green-300">
+        <div class="space-y-2" id="discount-result"></div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div><!-- Footer -->
+   <footer class="bg-white border-t border-gray-200 mt-8 py-4">
+    <p class="text-center text-gray-500 text-sm">💻 ව්‍යාජ කේත (Pseudocode) ඉගෙනීම - ICT Grade 10/11</p>
+   </footer>
+  </div>
+  <script>
+    const defaultConfig = {
+      main_title: "📝 ව්‍යාජ කේත අභ්‍යාස",
+      primary_color: "#6366f1",
+      background_color: "#f5f3ff",
+      text_color: "#1f2937",
+      accent_color: "#10b981",
+      secondary_color: "#8b5cf6"
+    };
+
+    let config = { ...defaultConfig };
+
+    // Tab Navigation
+    function showExercise(num) {
+      // Hide all exercises
+      document.getElementById('exercise1').classList.add('hidden');
+      document.getElementById('exercise2').classList.add('hidden');
+      document.getElementById('exercise3').classList.add('hidden');
+      
+      // Remove active class from all tabs
+      document.getElementById('tab1').classList.remove('tab-active');
+      document.getElementById('tab2').classList.remove('tab-active');
+      document.getElementById('tab3').classList.remove('tab-active');
+      document.getElementById('tab1').classList.add('bg-white', 'text-gray-600');
+      document.getElementById('tab2').classList.add('bg-white', 'text-gray-600');
+      document.getElementById('tab3').classList.add('bg-white', 'text-gray-600');
+      
+      // Show selected exercise and activate tab
+      document.getElementById('exercise' + num).classList.remove('hidden');
+      document.getElementById('tab' + num).classList.add('tab-active');
+      document.getElementById('tab' + num).classList.remove('bg-white', 'text-gray-600');
+    }
+
+    // Exercise 1: Calculate Area
+    function calculateArea() {
+      const length = parseFloat(document.getElementById('length1').value);
+      const width = parseFloat(document.getElementById('width1').value);
+      
+      if (isNaN(length) || isNaN(width) || length < 0 || width < 0) {
+        document.getElementById('result1').classList.remove('hidden');
+        document.getElementById('area-result').innerHTML = '⚠️ කරුණාකර නිවැරදි අගයන් ඇතුළත් කරන්න';
+        document.getElementById('result1').querySelector('.result-box').classList.remove('border-green-500');
+        document.getElementById('result1').querySelector('.result-box').classList.add('border-yellow-500');
+        return;
+      }
+      
+      const area = length * width;
+      document.getElementById('result1').classList.remove('hidden');
+      document.getElementById('result1').querySelector('.result-box').classList.add('border-green-500');
+      document.getElementById('result1').querySelector('.result-box').classList.remove('border-yellow-500');
+      document.getElementById('area-result').innerHTML = `
+        <span class="text-lg">📐 වර්ගඵලය (Area) = <strong>${length}</strong> × <strong>${width}</strong> = <strong class="text-2xl text-green-700">${area}</strong> වර්ග ඒකක</span>
+      `;
+    }
+
+    // Exercise 2: Pass/Fail Check
+    function checkPassFail() {
+      const marks = parseFloat(document.getElementById('marks2').value);
+      
+      if (isNaN(marks) || marks < 0 || marks > 100) {
+        document.getElementById('result2').classList.remove('hidden');
+        document.getElementById('pass-fail-result').innerHTML = '⚠️ කරුණාකර 0-100 අතර ලකුණක් ඇතුළත් කරන්න';
+        document.getElementById('pass-fail-result').className = 'rounded-lg p-4 text-center font-bold text-xl bg-yellow-100 border-2 border-yellow-400 text-yellow-800';
+        return;
+      }
+      
+      document.getElementById('result2').classList.remove('hidden');
+      
+      if (marks >= 40) {
+        document.getElementById('pass-fail-result').innerHTML = `
+          <div class="text-3xl mb-2">✅</div>
+          <div>ලකුණු: ${marks}</div>
+          <div class="text-2xl mt-2">Pass - සමත්!</div>
+        `;
+        document.getElementById('pass-fail-result').className = 'rounded-lg p-4 text-center font-bold text-xl bg-green-100 border-2 border-green-400 text-green-800';
+      } else {
+        document.getElementById('pass-fail-result').innerHTML = `
+          <div class="text-3xl mb-2">❌</div>
+          <div>ලකුණු: ${marks}</div>
+          <div class="text-2xl mt-2">Fail - අසමත්</div>
+          <div class="text-sm mt-2 font-normal">සමත් වීමට තවත් ${40 - marks} ලකුණු අවශ්‍යයි</div>
+        `;
+        document.getElementById('pass-fail-result').className = 'rounded-lg p-4 text-center font-bold text-xl bg-red-100 border-2 border-red-400 text-red-800';
+      }
+    }
+
+    // Exercise 3: Calculate Discount
+    function calculateDiscount() {
+      const totalBill = parseFloat(document.getElementById('bill3').value);
+      
+      if (isNaN(totalBill) || totalBill < 0) {
+        document.getElementById('result3').classList.remove('hidden');
+        document.getElementById('discount-result').innerHTML = '<p class="text-yellow-700">⚠️ කරුණාකර නිවැරදි මුදලක් ඇතුළත් කරන්න</p>';
+        return;
+      }
+      
+      document.getElementById('result3').classList.remove('hidden');
+      
+      let discount = 0;
+      let finalAmount = totalBill;
+      let discountMessage = '';
+      
+      if (totalBill > 2000) {
+        discount = totalBill * 0.10;
+        finalAmount = totalBill - discount;
+        discountMessage = `
+          <div class="flex justify-between items-center py-2 border-b">
+            <span>මුළු බිල්පත:</span>
+            <span class="font-semibold">Rs. ${totalBill.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b text-green-600">
+            <span>වට්ටම (10%):</span>
+            <span class="font-semibold">- Rs. ${discount.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 text-lg">
+            <span class="font-bold">ගෙවිය යුතු මුදල:</span>
+            <span class="font-bold text-green-700 text-xl">Rs. ${finalAmount.toFixed(2)}</span>
+          </div>
+          <div class="mt-3 bg-green-100 rounded-lg p-2 text-center text-green-700">
+            🎉 ඔබට Rs. ${discount.toFixed(2)} ක වට්ටමක් ලැබුණි!
+          </div>
+        `;
+      } else {
+        discountMessage = `
+          <div class="flex justify-between items-center py-2 border-b">
+            <span>මුළු බිල්පත:</span>
+            <span class="font-semibold">Rs. ${totalBill.toFixed(2)}</span>
+          </div>
+          <div class="flex justify-between items-center py-2 border-b text-gray-500">
+            <span>වට්ටම:</span>
+            <span>Rs. 0.00</span>
+          </div>
+          <div class="flex justify-between items-center py-2 text-lg">
+            <span class="font-bold">ගෙවිය යුතු මුදල:</span>
+            <span class="font-bold text-gray-700 text-xl">Rs. ${finalAmount.toFixed(2)}</span>
+          </div>
+          <div class="mt-3 bg-yellow-100 rounded-lg p-2 text-center text-yellow-700">
+            💡 Rs. 2000 ට වැඩි මිලදී ගැනීම් සඳහා 10% වට්ටමක් ලැබේ!<br>
+            <span class="text-sm">තවත් Rs. ${(2000 - totalBill + 0.01).toFixed(2)} ක් වියදම් කරන්න!</span>
+          </div>
+        `;
+      }
+      
+      document.getElementById('discount-result').innerHTML = discountMessage;
+    }
+
+    // Element SDK Integration
+    async function onConfigChange(newConfig) {
+      config = { ...defaultConfig, ...newConfig };
+      document.getElementById('main-title').textContent = config.main_title || defaultConfig.main_title;
+    }
+
+    function mapToCapabilities(config) {
+      return {
+        recolorables: [
+          {
+            get: () => config.primary_color || defaultConfig.primary_color,
+            set: (value) => { config.primary_color = value; window.elementSdk.setConfig({ primary_color: value }); }
+          },
+          {
+            get: () => config.background_color || defaultConfig.background_color,
+            set: (value) => { config.background_color = value; window.elementSdk.setConfig({ background_color: value }); }
+          },
+          {
+            get: () => config.text_color || defaultConfig.text_color,
+            set: (value) => { config.text_color = value; window.elementSdk.setConfig({ text_color: value }); }
+          },
+          {
+            get: () => config.accent_color || defaultConfig.accent_color,
+            set: (value) => { config.accent_color = value; window.elementSdk.setConfig({ accent_color: value }); }
+          },
+          {
+            get: () => config.secondary_color || defaultConfig.secondary_color,
+            set: (value) => { config.secondary_color = value; window.elementSdk.setConfig({ secondary_color: value }); }
+          }
+        ],
+        borderables: [],
+        fontEditable: undefined,
+        fontSizeable: undefined
+      };
+    }
+
+    function mapToEditPanelValues(config) {
+      return new Map([
+        ["main_title", config.main_title || defaultConfig.main_title]
+      ]);
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities,
+        mapToEditPanelValues
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9ca079e2d4c27245',t:'MTc3MDQ0MjAyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
