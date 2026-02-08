@@ -290,7 +290,7 @@
         <span class="keyword">BEGIN</span>
        </div>
        <div class="ml-4">
-        <span class="comment">// Variables declare කිරීම</span>
+        <span class="comment">// Variables declare කිරීම (Optional)</span>
        </div>
        <div class="ml-4">
         <span class="keyword">DECLARE</span> <span class="variable">totalBill</span>, <span class="variable">discount</span>, <span class="variable">finalAmount</span> <span class="keyword">AS</span> NUMBER
@@ -300,9 +300,6 @@
        </div>
        <div class="ml-4">
         <span class="comment">// Input ලබාගැනීම</span>
-       </div>
-       <div class="ml-4">
-        <span class="keyword">DISPLAY</span> <span class="string">"මුළු බිල්පත ඇතුළත් කරන්න:"</span>
        </div>
        <div class="ml-4">
         <span class="keyword">INPUT</span> <span class="variable">totalBill</span>
@@ -317,10 +314,10 @@
         <span class="keyword">IF</span> <span class="variable">totalBill</span> <span class="operator">&gt;</span> <span class="operator">2000</span> <span class="keyword">THEN</span>
        </div>
        <div class="ml-8">
-        <span class="variable">discount</span> <span class="operator">←</span> <span class="variable">totalBill</span> <span class="operator">×</span> <span class="operator">0.10</span>
+        <span class="variable">discount</span> <span class="operator">=</span> <span class="variable">totalBill</span> <span class="operator">×</span> <span class="operator">0.10</span>
        </div>
        <div class="ml-8">
-        <span class="variable">finalAmount</span> <span class="operator">←</span> <span class="variable">totalBill</span> <span class="operator">-</span> <span class="variable">discount</span>
+        <span class="variable">finalAmount</span> <span class="operator">=</span> <span class="variable">totalBill</span> <span class="operator">-</span> <span class="variable">discount</span>
        </div>
        <div class="ml-8">
         <span class="keyword">DISPLAY</span> <span class="string">"වට්ටම් (10%) = "</span>, <span class="variable">discount</span>
